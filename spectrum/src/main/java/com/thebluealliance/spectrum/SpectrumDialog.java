@@ -17,6 +17,8 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.thebluealliance.spectrum.views.SpectrumPalette;
+
 public class SpectrumDialog extends DialogFragment implements SpectrumPalette.OnColorSelectedListener {
 
     private static final String KEY_TITLE = "title";

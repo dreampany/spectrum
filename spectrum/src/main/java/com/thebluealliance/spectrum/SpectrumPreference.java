@@ -15,17 +15,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.thebluealliance.spectrum.internal.ColorCircleDrawable;
+import com.thebluealliance.spectrum.views.SpectrumPalette;
 
 public class SpectrumPreference extends DialogPreference {
 
     private static final @ColorInt int DEFAULT_VALUE = Color.BLACK;
-    public static final int ALPHA_DISABLED = 97; //38% alpha
+    private static final int ALPHA_DISABLED = 97; //38% alpha
 
     private @ColorInt int[] mColors;
     private @ColorInt int mCurrentValue;
     private @ColorInt int mDialogColor;
     private boolean mCloseOnSelected = true;
-    private SpectrumPalette mColorPalette;
     private boolean mValueSet = false;
     private View mColorView;
     private int mOutlineWidth = 0;
@@ -187,7 +187,7 @@ public class SpectrumPreference extends DialogPreference {
             throw new RuntimeException("SpectrumPreference requires a colors array");
         }
 
-        mColorPalette = (SpectrumPalette) view.findViewById(R.id.palette);
+        SpectrumPalette mColorPalette = (SpectrumPalette) view.findViewById(R.id.palette);
         mColorPalette.setColors(mColors);
         mColorPalette.setSelectedColor(mCurrentValue);
         mColorPalette.setOutlineWidth(mOutlineWidth);

@@ -20,7 +20,7 @@ import com.thebluealliance.spectrum.internal.SpectrumPreferenceDialogFragmentCom
 
 /**
  * A version of {@link SpectrumPreference} meant to be used with the support library Preferences.
- *
+ * <p>
  * This preference should be hosted and displayed by a {@link PreferenceFragmentCompat} fragment.
  * Because the support library preferences work differently than normal preferences, you have to
  * subclass {@link PreferenceFragmentCompat} and override
@@ -30,7 +30,7 @@ import com.thebluealliance.spectrum.internal.SpectrumPreferenceDialogFragmentCom
  * If that method returns true, the preference was an instance of {@link SpectrumPreferenceCompat}
  * and the dialog was displayed. If it returns false, you should call through to the super method
  * to ensure proper behavior with other preference types. An example of this is shown below.
- *
+ * <p>
  * <pre>{@code
  * public void onDisplayPreferenceDialog(Preference preference) {
  *     if (!SpectrumPreferenceCompat.onDisplayPreferenceDialog(preference, this)) {
@@ -44,11 +44,17 @@ public class SpectrumPreferenceCompat extends DialogPreference {
 
     private static final String DIALOG_FRAGMENT_TAG = "android.support.v7.preference.PreferenceFragment.DIALOG";
 
-    private static final @ColorInt int DEFAULT_VALUE = Color.BLACK;
+    private static final
+    @ColorInt
+    int DEFAULT_VALUE = Color.BLACK;
     public static final int ALPHA_DISABLED = 97; //38% alpha
 
-    private @ColorInt int[] mColors;
-    private @ColorInt int mCurrentValue;
+    private
+    @ColorInt
+    int[] mColors;
+    private
+    @ColorInt
+    int mCurrentValue;
     private boolean mCloseOnSelected = true;
     private boolean mValueSet = false;
     private View mColorView;
@@ -57,7 +63,7 @@ public class SpectrumPreferenceCompat extends DialogPreference {
 
     private SharedPreferences.OnSharedPreferenceChangeListener mListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
         public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-            if(getKey().equals(key)){
+            if (getKey().equals(key)) {
                 mCurrentValue = prefs.getInt(key, mCurrentValue);
                 updateColorView();
             }
@@ -127,7 +133,9 @@ public class SpectrumPreferenceCompat extends DialogPreference {
      *
      * @return Array of colors
      */
-    public @ColorInt int[] getColors() {
+    public
+    @ColorInt
+    int[] getColors() {
         return mColors;
     }
 
@@ -219,7 +227,16 @@ public class SpectrumPreferenceCompat extends DialogPreference {
 
     public static boolean onDisplayPreferenceDialog(Preference preference, PreferenceFragmentCompat target) {
         boolean handled = false;
-        if (target.getTargetFragment() instanceof PreferenceFragmentCompat.OnPreferenceDisplayDialogCallback) {
+
+        if (preference instanceof CircleColorPickerPreferenceCompat) {
+            handled = true;
+            DialogFragment fragment = CircleColorPickerPreferenceDialogFragmentCompat.newInstance(preference);
+            fragment.setTargetFragment(target, 0);
+            fragment.show(target.getFragmentManager(),
+                    "android.support.v7.preference.PreferenceFragment.DIALOG");
+        }
+
+        if (!handled && target.getTargetFragment() instanceof PreferenceFragmentCompat.OnPreferenceDisplayDialogCallback) {
             handled = ((PreferenceFragmentCompat.OnPreferenceDisplayDialogCallback) target.getTargetFragment())
                     .onPreferenceDisplayDialog(target, preference);
         }

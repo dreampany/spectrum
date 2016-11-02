@@ -1,6 +1,6 @@
 package com.thebluealliance.spectrum.internal;
 
-import com.thebluealliance.spectrum.SpectrumPalette;
+import com.thebluealliance.spectrum.views.SpectrumPalette;
 import com.thebluealliance.spectrum.R;
 import com.thebluealliance.spectrum.SpectrumPreferenceCompat;
 

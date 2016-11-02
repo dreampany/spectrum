@@ -1,6 +1,6 @@
 package com.thebluealliance.spectrumsample;
 
-import com.thebluealliance.spectrum.SpectrumPalette;
+import com.thebluealliance.spectrum.views.SpectrumPalette;
 
 import android.os.Bundle;
 import android.support.annotation.ColorInt;

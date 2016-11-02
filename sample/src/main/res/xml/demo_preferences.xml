@@ -2,6 +2,12 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <com.thebluealliance.spectrum.CircleColorPickerPreferenceCompat
+        android:defaultValue="@color/md_indigo_500"
+        android:key="demo_preference_0"
+        android:summary="Dragon ball is awesome."
+        android:title="Color preference" />
+
     <com.thebluealliance.spectrum.SpectrumPreferenceCompat
         android:defaultValue="@color/md_indigo_500"
         android:key="demo_preference_1"

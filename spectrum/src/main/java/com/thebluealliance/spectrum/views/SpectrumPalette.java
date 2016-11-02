@@ -1,5 +1,6 @@
-package com.thebluealliance.spectrum;
+package com.thebluealliance.spectrum.views;
 
+import com.thebluealliance.spectrum.R;
 import com.thebluealliance.spectrum.internal.ColorItem;
 import com.thebluealliance.spectrum.internal.ColorUtil;
 import com.thebluealliance.spectrum.internal.SelectedColorChangedEvent;
@@ -37,7 +38,6 @@ public class SpectrumPalette extends LinearLayout {
     private boolean mHasFixedColumnCount = false;
     private int mFixedColumnCount = -1;
     private int mOutlineWidth = 0;
-    private int mComputedVerticalPadding = 0;
     private int mOriginalPaddingTop = 0;
     private int mOriginalPaddingBottom = 0;
     private boolean mSetPaddingCalledInternally = false;
@@ -145,7 +145,7 @@ public class SpectrumPalette extends LinearLayout {
             mNumColumns = mFixedColumnCount;
         }
 
-        mComputedVerticalPadding = (width - (computeWidthForNumColumns(mNumColumns) + getPaddingLeft() + getPaddingRight())) / 2;
+        int mComputedVerticalPadding = (width - (computeWidthForNumColumns(mNumColumns) + getPaddingLeft() + getPaddingRight())) / 2;
 
         if (heightMode == MeasureSpec.EXACTLY) {
             height = heightSize;

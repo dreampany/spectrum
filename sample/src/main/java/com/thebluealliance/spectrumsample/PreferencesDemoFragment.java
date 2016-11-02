@@ -18,7 +18,8 @@ public class PreferencesDemoFragment extends PreferenceFragmentCompat {
         }
     }
 
-    @Override public void onDisplayPreferenceDialog(Preference preference) {
+    @Override
+    public void onDisplayPreferenceDialog(Preference preference) {
         if (!SpectrumPreferenceCompat.onDisplayPreferenceDialog(preference, this)) {
             super.onDisplayPreferenceDialog(preference);
         }
