@@ -1,7 +1,6 @@
 package com.thebluealliance.spectrum;
 
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.preference.DialogPreference;
 import android.support.v7.preference.Preference;
@@ -27,9 +26,10 @@ public class CircleColorPickerPreferenceDialogFragmentCompat extends PreferenceD
 
         DialogPreference preference = getPreference();
         int color = preference instanceof CircleColorPickerPreferenceCompat ?
-                ((CircleColorPickerPreferenceCompat) preference).getColor() : Color.parseColor("#00A9F7");
+                ((CircleColorPickerPreferenceCompat) preference).getColor() : 0;
 
         mColorPickerView.setOldCenterColor(color);
+        mColorPickerView.setColor(color);
     }
 
     public void onDialogClosed(boolean positiveResult) {

@@ -228,8 +228,9 @@ public class ColorPickerView extends View {
 
     public void setColor(int color) {
         mAngle = colorToAngle(color);
-        mPointerColor.setColor(calculateColor(mAngle));
-        mCenterNewPaint.setColor(calculateColor(mAngle));
+        mPointerColor.setColor(color);
+
+        setNewCenterColor(color);
 
         invalidate();
     }
